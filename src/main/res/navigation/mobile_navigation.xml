@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/loginActivity">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.admin.ui.home.HomeFragment"
+        android:label="Admin Panel"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
+            app:destination="@id/nav_home_second"
+            app:popUpTo="@id/loginActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_home_second"
+        android:name="com.example.admin.ui.home.HomeSecondFragment"
+        android:label="@string/home_second"
+        tools:layout="@layout/fragment_home_second">
+        <action
+            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
+            app:destination="@id/nav_home" />
+
+        <argument
+            android:name="myArg"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_student"
+        android:name="com.example.admin.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery">
+        <action
+            android:id="@+id/action_nav_student_to_nav_Donor"
+            app:destination="@id/nav_Donor" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_Donor"
+        android:name="com.example.admin.ui.slideshow.SlideshowFragment"
+        android:label="Donor"
+        tools:layout="@layout/fragment_slideshow">
+        <action
+            android:id="@+id/action_nav_Donor_to_nav_Pads"
+            app:destination="@id/nav_Pads" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_Pads"
+        android:name="com.example.admin.ui.slideshow.SlideshowFragment"
+        android:label="Pads"
+        tools:layout="@layout/fragment_slideshow">
+        <action
+            android:id="@+id/action_nav_Pads_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.admin.ui.login.AdminLogin"
+        android:label="LoginActivity">
+        <action
+            android:id="@+id/action_loginActivity_to_nav_home"
+            app:destination="@id/nav_home"
+            app:popUpTo="@id/loginActivity" />
+    </activity>
+</navigation>
